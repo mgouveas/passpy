@@ -27,7 +27,7 @@ def number_pass():
     chars = string.digits
     rnd = random.SystemRandom()
     password = ''.join(rnd.choice(chars) for i in range(pass_size))
-    print(password)
+    print(f'Sua senha segura: {password}')
 
 
 def alfa_pass():
@@ -35,7 +35,7 @@ def alfa_pass():
     chars = string.ascii_letters + string.digits + '!@#$%&*()-=+,.;<>:?Ç~^{}[]'
     rnd = random.SystemRandom()
     password = ''.join(rnd.choice(chars) for i in range(pass_size))
-    print(password)
+    print(f'Sua senha segura: {password}')
 
 
 def hasher():
@@ -43,7 +43,7 @@ def hasher():
     rnd = random.SystemRandom()
     psw = ''.join(rnd.choice(chars) for i in range(20))
     num_hash = hashlib.sha3_256(psw.encode('UTF-8'))
-    print(num_hash.hexdigest())
+    print(f'Sua hash segura: {num_hash.hexdigest()}')
 
 
 match option:
@@ -55,3 +55,6 @@ match option:
 
     case 3:
         hasher()
+
+
+input("\n\nPressione enter para encerrar o programa...")
