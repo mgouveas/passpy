@@ -20,10 +20,10 @@ print("""
     """)
 
 option = int(input("Escolhe uma opção do sistema: "))
-
+pass_size = int(input('Número de caracteres: '))
+special_char = '!@#$%&*()-=+,.;<>:?Ç~^}_{]['
 
 def number_pass():
-    pass_size = int(input('Número de caracteres: '))
     chars = string.digits
     rnd = random.SystemRandom()
     password = ''.join(rnd.choice(chars) for i in range(pass_size))
@@ -31,30 +31,33 @@ def number_pass():
 
 
 def alfa_pass():
-    pass_size = int(input('Número de caracteres: '))
-    chars = string.ascii_letters + string.digits + '!@#$%&*()-=+,.;<>:?Ç~^{}[]'
+    chars = string.ascii_letters + string.digits + special_char
     rnd = random.SystemRandom()
     password = ''.join(rnd.choice(chars) for i in range(pass_size))
     print(f'Sua senha segura: {password}')
 
 
 def hasher():
-    chars = string.ascii_letters + string.digits + '!@#$%&*()-=+,.;<>:?Ç~^{}[]'
+    chars = string.ascii_letters + string.digits + special_char
     rnd = random.SystemRandom()
     psw = ''.join(rnd.choice(chars) for i in range(20))
     num_hash = hashlib.sha3_256(psw.encode('UTF-8'))
     print(f'Sua hash segura: {num_hash.hexdigest()}')
 
+def main():
 
-match option:
-    case 1:
-        number_pass()
+    match option:
+        case 1:
+            number_pass()
 
-    case 2:
-        alfa_pass()
+        case 2:
+            alfa_pass()
 
-    case 3:
-        hasher()
+        case 3:
+            hasher()
 
+
+if __name__ == '__main__':
+    main()
 
 input("\n\nPressione enter para encerrar o programa...")
